@@ -13,13 +13,13 @@ using Content.Shared.Popups;
 using Content.Shared.Power;
 using Content.Shared.Power.EntitySystems;
 using Content.Shared.Storage.Components;
-using Content.Trauma.Shared.DeepFryer.Components;
+using Content.Trauma.Shared.Kitchen.Components;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Containers;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 
-namespace Content.Trauma.Shared.DeepFryer.Systems;
+namespace Content.Trauma.Shared.Kitchen.Systems;
 
 public abstract class SharedDeepFryerSystem : EntitySystem
 {

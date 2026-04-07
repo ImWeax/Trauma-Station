@@ -5,7 +5,7 @@ using Content.Shared.FixedPoint;
 using Content.Shared.Tag;
 using Robust.Shared.Prototypes;
 
-namespace Content.Trauma.Shared.DeepFryer;
+namespace Content.Trauma.Shared.Kitchen;
 
 /// <summary>
 /// A deep fryer recipe that requires at least 1 item, and optionally consumes some reagents.

@@ -2,7 +2,7 @@
 
 using Robust.Shared.GameStates;
 
-namespace Content.Trauma.Shared.DeepFryer.Components;
+namespace Content.Trauma.Shared.Kitchen.Components;
 
 /// <summary>
 /// Component added to deep fryers that have power and are closed.

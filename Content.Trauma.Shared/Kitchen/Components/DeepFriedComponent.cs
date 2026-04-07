@@ -2,7 +2,7 @@
 
 using Robust.Shared.GameStates;
 
-namespace Content.Trauma.Shared.DeepFryer.Components;
+namespace Content.Trauma.Shared.Kitchen.Components;
 
 [RegisterComponent, NetworkedComponent]
 public sealed partial class DeepFriedComponent : Component;

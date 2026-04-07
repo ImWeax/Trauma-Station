@@ -10,12 +10,12 @@ using Content.Shared.FixedPoint;
 using Content.Shared.Storage.EntitySystems;
 using Content.Shared.Tag;
 using Content.Trauma.Common.Kitchen;
-using Content.Trauma.Shared.DeepFryer;
-using Content.Trauma.Shared.DeepFryer.Components;
-using Content.Trauma.Shared.DeepFryer.Systems;
+using Content.Trauma.Shared.Kitchen;
+using Content.Trauma.Shared.Kitchen.Components;
+using Content.Trauma.Shared.Kitchen.Systems;
 using Robust.Shared.Prototypes;
 
-namespace Content.Trauma.Server.DeepFryer;
+namespace Content.Trauma.Server.Kitchen.EntitySystems;
 
 public sealed class DeepFryerSystem : SharedDeepFryerSystem
 {

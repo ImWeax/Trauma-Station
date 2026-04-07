@@ -6,7 +6,7 @@ using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
 
-namespace Content.Trauma.Shared.DeepFryer.Components;
+namespace Content.Trauma.Shared.Kitchen.Components;
 
 [RegisterComponent, NetworkedComponent]
 public sealed partial class DeepFryerComponent : Component
