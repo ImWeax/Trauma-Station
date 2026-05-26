@@ -724,6 +724,22 @@
 
 - type: emoteSounds
   parent: BaseMobEmotes # Trauma
+  id: Sheep
+  sound:
+    collection: Sheep
+    params:
+      variation: 0.05
+
+- type: emoteSounds
+  parent: BaseMobEmotes # Trauma
+  id: SheepSpace
+  sound:
+    collection: SheepSpace
+    params:
+      variation: 0.05
+
+- type: emoteSounds
+  parent: BaseMobEmotes # Trauma
   id: Scurret
   params:
     variation: 0.125

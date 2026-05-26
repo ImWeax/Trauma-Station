@@ -32,10 +32,21 @@
   id: HydroponicsToolClippers
   description: A tool used to take samples from plants.
   components:
+  # <Trauma>
+  - type: Retractor # Same as wirecutters
+    speed: 0.35
+  - type: Hemostat
+    speed: 0.6
+  - type: SurgeryTool
+    startSound:
+      path: /Audio/_Shitmed/Medical/Surgery/retractor1.ogg
+    endSound:
+      path: /Audio/_Shitmed/Medical/Surgery/retractor2.ogg
+  # </Trauma>
   - type: Tag
     tags:
+    - HydroponicsToolClippers # Trauma
     - PlantSampleTaker
-    - HydroponicsToolClippers # Einstein Engines
   - type: Sprite
     sprite: Objects/Tools/Hydroponics/clippers.rsi
     state: icon
@@ -47,25 +58,17 @@
   - type: Item
     sprite: Objects/Tools/Hydroponics/clippers.rsi
     storedRotation: -90
-  - type: Retractor # Shitmed: Same as wirecutters
-    speed: 0.35
-  - type: Hemostat
-    speed: 0.6
-  - type: SurgeryTool # Shitmed
-    startSound:
-      path: /Audio/_Shitmed/Medical/Surgery/retractor1.ogg
-    endSound:
-      path: /Audio/_Shitmed/Medical/Surgery/retractor2.ogg
   - type: PhysicalComposition
     materialComposition:
       Steel: 100
-  # Goobstation changes
   - type: Tool
     qualities:
+    - Shearing
+    # <Trauma>
     - Cutting
     useSound:
       path: /Audio/Items/wirecutter.ogg
-    speedModifier: 0.25
+    # </Trauma>
 
 - type: entity
   name: scythe
