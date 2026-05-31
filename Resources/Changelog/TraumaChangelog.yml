@@ -9374,3 +9374,10 @@ Entries:
   id: 1064
   time: '2026-05-31T07:38:05.0000000+00:00'
   url: https://github.com/Trauma-Station/Trauma-Station/pull/2918
+- author: deltanedas
+  changes:
+  - type: Add
+    message: Added string UPPER/LOWER circuit gates.
+  id: 1065
+  time: '2026-05-31T07:44:24.0000000+00:00'
+  url: https://github.com/Trauma-Station/Trauma-Station/pull/2923
