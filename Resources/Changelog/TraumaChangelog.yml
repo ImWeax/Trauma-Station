@@ -9535,3 +9535,16 @@ Entries:
   id: 1082
   time: '2026-06-01T18:23:00.0000000+00:00'
   url: https://github.com/Trauma-Station/Trauma-Station/pull/2783
+- author: deltanedas
+  changes:
+  - type: Add
+    message: >-
+      You can now forge with silver and gold. Silver weapons get bonus holy
+      damage, gold is just for show.
+  - type: Tweak
+    message: >-
+      Forged items now have a sale value depending on the material, cost and
+      amount of work to make.
+  id: 1083
+  time: '2026-06-01T18:32:46.0000000+00:00'
+  url: https://github.com/Trauma-Station/Trauma-Station/pull/2943
