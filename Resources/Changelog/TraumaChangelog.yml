@@ -9569,3 +9569,10 @@ Entries:
   id: 1086
   time: '2026-06-02T08:28:43.0000000+00:00'
   url: https://github.com/Trauma-Station/Trauma-Station/pull/2991
+- author: assripper.
+  changes:
+  - type: Fix
+    message: roundstart xenomorphs now work again
+  id: 1087
+  time: '2026-06-02T08:33:11.0000000+00:00'
+  url: https://github.com/Trauma-Station/Trauma-Station/pull/2982
