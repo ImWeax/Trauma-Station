@@ -1,0 +1,11 @@
+﻿- type: reaction
+  id: Dewormer
+  reactants:
+    Immurin:
+      amount: 2
+    SodiumHyroxide:
+      amount: 1
+    TableSalt:
+      amount: 1
+  products:
+    Dewormer: 5
