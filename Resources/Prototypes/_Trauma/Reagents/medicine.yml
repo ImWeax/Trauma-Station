@@ -1,0 +1,15 @@
+- type: reagent
+  id: Dewormer
+  name: reagent-name-dewormer
+  group: Medicine
+  desc: reagent-desc-dewormer
+  physicalDesc: reagent-physical-desc-chalky
+  allowedDepartments:
+  - Medical
+  flavor: medicine
+  color: "#e0ae7b"
+  metabolisms:
+    Bloodstream:
+    - !type:DiseaseProgressChange
+      affectedType: Parasite
+      progressModifier: -0.10
