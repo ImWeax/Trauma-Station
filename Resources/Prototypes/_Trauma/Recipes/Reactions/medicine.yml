@@ -1,4 +1,6 @@
-﻿- type: reaction
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+- type: reaction
   id: Dewormer
   reactants:
     Immurin:
