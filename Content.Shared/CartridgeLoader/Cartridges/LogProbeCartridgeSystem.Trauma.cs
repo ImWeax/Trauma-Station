@@ -1,19 +1,14 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using Content.Shared.CartridgeLoader;
 using Content.Trauma.Common.CartridgeLoader.Cartridges;
 using Content.Trauma.Common.NanoChat;
+using Content.Shared.Interaction;
 
-namespace Content.Server.CartridgeLoader.Cartridges;
+namespace Content.Shared.CartridgeLoader.Cartridges;
 
 public sealed partial class LogProbeCartridgeSystem
 {
-    private void InitializeNanoChat()
-    {
-        SubscribeLocalEvent<NanoChatRecipientUpdatedEvent>(OnRecipientUpdated);
-        SubscribeLocalEvent<NanoChatMessageReceivedEvent>(OnMessageReceived);
-    }
-
+    [SubscribeLocalEvent]
     private void OnRecipientUpdated(ref NanoChatRecipientUpdatedEvent args)
     {
         var query = EntityQueryEnumerator<LogProbeCartridgeComponent, CartridgeComponent>();
@@ -36,6 +31,7 @@ public sealed partial class LogProbeCartridgeSystem
         }
     }
 
+    [SubscribeLocalEvent]
     private void OnMessageReceived(ref NanoChatMessageReceivedEvent args)
     {
         var query = EntityQueryEnumerator<LogProbeCartridgeComponent, CartridgeComponent>();
@@ -59,15 +55,16 @@ public sealed partial class LogProbeCartridgeSystem
     }
 
     private void ScanNanoChatCard(Entity<LogProbeCartridgeComponent> ent,
-        CartridgeAfterInteractEvent args,
+        ref CartridgeRelayedEvent<AfterInteractEvent> args,
         EntityUid target,
         NanoChatCardComponent card)
     {
-        _audio.PlayEntity(ent.Comp.SoundScan,
-            args.InteractEvent.User,
+        var user = args.Args.User;
+        _audio.PlayPredicted(ent.Comp.SoundScan,
             target,
+            user,
             ent.Comp.SoundScan.Params.WithVariation(0.25f));
-        _popup.PopupCursor(Loc.GetString("log-probe-scan-nanochat", ("card", target)), args.InteractEvent.User);
+        _popup.PopupClient(Loc.GetString("log-probe-scan-nanochat", ("card", target)), target, user);
 
         ent.Comp.PulledAccessLogs.Clear();
 
@@ -77,6 +74,7 @@ public sealed partial class LogProbeCartridgeSystem
             card.Number,
             GetNetEntity(target)
         );
+        Dirty(ent);
 
         UpdateUiState(ent, args.Loader);
     }

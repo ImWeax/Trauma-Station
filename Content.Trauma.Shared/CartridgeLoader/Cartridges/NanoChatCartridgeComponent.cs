@@ -2,21 +2,22 @@
 
 using Content.Shared.Radio;
 
-namespace Content.Trauma.Server.CartridgeLoader.Cartridges;
+namespace Content.Trauma.Shared.CartridgeLoader.Cartridges;
 
-[RegisterComponent, Access(typeof(NanoChatCartridgeSystem))]
+[RegisterComponent, NetworkedComponent, Access(typeof(NanoChatCartridgeSystem))]
+[AutoGenerateComponentState]
 public sealed partial class NanoChatCartridgeComponent : Component
 {
     /// <summary>
     ///     Station entity to keep track of.
     /// </summary>
-    [DataField]
+    [DataField, AutoNetworkedField]
     public EntityUid? Station;
 
     /// <summary>
     ///     The NanoChat card to keep track of.
     /// </summary>
-    [DataField]
+    [DataField, AutoNetworkedField]
     public EntityUid? Card;
 
     /// <summary>

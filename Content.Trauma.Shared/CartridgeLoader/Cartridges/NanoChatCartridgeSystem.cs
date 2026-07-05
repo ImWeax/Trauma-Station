@@ -1,36 +1,34 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using System.Linq;
-using Content.Server.Administration.Logs;
-using Content.Server.CartridgeLoader;
-using Content.Server.Power.Components;
-using Content.Server.Radio;
-using Content.Server.Station.Systems;
+using Content.Shared.Administration.Logs;
 using Content.Shared.Access.Components;
 using Content.Shared.CartridgeLoader;
 using Content.Shared.CCVar;
 using Content.Shared.Database;
 using Content.Shared.PDA;
+using Content.Shared.Power.Components;
+using Content.Shared.Radio;
 using Content.Shared.Radio.Components;
+using Content.Shared.Station;
 using Content.Trauma.Common.CartridgeLoader.Cartridges;
 using Content.Trauma.Common.Chat;
 using Content.Trauma.Common.NanoChat;
-using Content.Trauma.Shared.CartridgeLoader.Cartridges;
 using Content.Trauma.Shared.NanoChat;
 using Robust.Shared.Configuration;
 using Robust.Shared.Timing;
 
-namespace Content.Trauma.Server.CartridgeLoader.Cartridges;
+namespace Content.Trauma.Shared.CartridgeLoader.Cartridges;
 
 public sealed partial class NanoChatCartridgeSystem : EntitySystem
 {
     [Dependency] private CartridgeLoaderSystem _cartridge = default!;
-    [Dependency] private IAdminLogManager _adminLogger = default!;
+    [Dependency] private IConfigurationManager _cfg = default!;
     [Dependency] private IGameTiming _timing = default!;
+    [Dependency] private ISharedAdminLogManager _adminLog = default!;
     [Dependency] private SharedNanoChatSystem _nanoChat = default!;
-    [Dependency] private StationSystem _station = default!;
+    [Dependency] private SharedStationSystem _station = default!;
     [Dependency] private SharedUserInterfaceSystem _ui = default!;
-    [Dependency] private IConfigurationManager _cfgManager = default!;
 
     // Messages in notifications get cut off after this point
     // no point in storing it on the comp
@@ -43,11 +41,8 @@ public sealed partial class NanoChatCartridgeSystem : EntitySystem
     {
         base.Initialize();
 
-        SubscribeLocalEvent<NanoChatCartridgeComponent, CartridgeUiReadyEvent>(OnUiReady);
-        SubscribeLocalEvent<NanoChatCartridgeComponent, CartridgeMessageEvent>(OnMessage);
-
-        Subs.CVar(_cfgManager, CCVars.MaxNameLength, value => _maxNameLength = value, true);
-        Subs.CVar(_cfgManager, CCVars.MaxIdJobLength, value => _maxIdJobLength = value, true);
+        Subs.CVar(_cfg, CCVars.MaxNameLength, value => _maxNameLength = value, true);
+        Subs.CVar(_cfg, CCVars.MaxIdJobLength, value => _maxIdJobLength = value, true);
     }
 
     private void UpdateClosed(Entity<NanoChatCartridgeComponent> ent)
@@ -97,6 +92,7 @@ public sealed partial class NanoChatCartridgeSystem : EntitySystem
     /// <summary>
     ///     Handles incoming UI messages from the NanoChat cartridge.
     /// </summary>
+    [SubscribeLocalEvent]
     private void OnMessage(Entity<NanoChatCartridgeComponent> ent, ref CartridgeMessageEvent args)
     {
         if (args is not NanoChatUiMessageEvent msg)
@@ -187,7 +183,7 @@ public sealed partial class NanoChatCartridgeSystem : EntitySystem
         // Initialize or update recipient
         _nanoChat.SetRecipient((card, card.Comp), msg.RecipientNumber.Value, recipient);
 
-        _adminLogger.Add(LogType.Action,
+        _adminLog.Add(LogType.Action,
             LogImpact.Low,
             $"{ToPrettyString(msg.Actor):user} created new NanoChat conversation with #{msg.RecipientNumber:D4} ({name})");
 
@@ -237,7 +233,7 @@ public sealed partial class NanoChatCartridgeSystem : EntitySystem
         if (!deleted)
             return;
 
-        _adminLogger.Add(LogType.Action,
+        _adminLog.Add(LogType.Action,
             LogImpact.Low,
             $"{ToPrettyString(msg.Actor):user} deleted NanoChat conversation with #{msg.RecipientNumber:D4}");
 
@@ -306,7 +302,7 @@ public sealed partial class NanoChatCartridgeSystem : EntitySystem
             ? string.Join(", ", recipients.Select(r => ToPrettyString(r)))
             : $"#{msg.RecipientNumber:D4}";
 
-        _adminLogger.Add(LogType.Chat,
+        _adminLog.Add(LogType.Chat,
             LogImpact.Low,
             $"{ToPrettyString(msg.Actor):user} sent NanoChat message to {recipientsText}: {content}{(deliveryFailed ? " [DELIVERY FAILED]" : "")}");
 
@@ -555,6 +551,7 @@ public sealed partial class NanoChatCartridgeSystem : EntitySystem
             : message[..(NotificationMaxLength - 4)] + " [...]";
     }
 
+    [SubscribeLocalEvent]
     private void OnUiReady(Entity<NanoChatCartridgeComponent> ent, ref CartridgeUiReadyEvent args)
     {
         _cartridge.RegisterBackgroundProgram(args.Loader, ent);
