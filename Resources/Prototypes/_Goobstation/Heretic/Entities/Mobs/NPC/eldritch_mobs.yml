@@ -138,6 +138,7 @@
     sprite: _Goobstation/Heretic/eldritch_mobs.rsi
     state: stalker
   - type: FlashImmunity
+    showInExamine: false
   - type: MeleeWeapon
     animation: WeaponArcClaw
     damage:
@@ -286,6 +287,7 @@
     baseWalkSpeed: 5
     baseSprintSpeed: 5
   - type: FlashImmunity
+    showInExamine: false
   - type: NightVision
     color: aquamarine
   - type: MeleeWeapon
@@ -579,6 +581,7 @@
     baseWalkSpeed: 4.5
     baseSprintSpeed: 4.5
   - type: FlashImmunity
+    showInExamine: false
   - type: HTN
     rootTask:
       task: HereticSummonCompound

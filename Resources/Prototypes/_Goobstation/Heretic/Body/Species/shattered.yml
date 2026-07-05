@@ -214,6 +214,7 @@
         volume: -8
   - type: Insulated
   - type: FlashImmunity
+    showInExamine: false
   - type: FlashSoundSuppression
     protectionRange: 0
   - type: CollectiveMind

@@ -112,6 +112,7 @@
         Caustic: -0.13
         Poison: -0.5
   - type: FlashImmunity
+    showInExamine: false
   - type: ScannableForPoints # NTR update
     points: 2 # this would be abused so much if i made it more
   - type: ToolRefinable

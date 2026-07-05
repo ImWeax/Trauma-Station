@@ -404,6 +404,7 @@
   - type: ExplosionResistance
     damageCoefficient: 0.5
   - type: FlashImmunity
+    showInExamine: false
   - type: SpeechSynthesis
     voice: BorgSyndie
   # </Trauma>

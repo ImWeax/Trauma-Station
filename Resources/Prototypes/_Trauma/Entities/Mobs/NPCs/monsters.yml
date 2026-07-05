@@ -97,6 +97,7 @@
   - type: Stamina
     baseCritThreshold: 9999
   - type: FlashImmunity
+    showInExamine: false
   - type: Puller
     needsHands: false
   - type: GhostRole
@@ -306,6 +307,7 @@
   - type: Stamina
     baseCritThreshold: 9999
   - type: FlashImmunity
+    showInExamine: false
   - type: Puller
     needsHands: false
   - type: GhostRole
