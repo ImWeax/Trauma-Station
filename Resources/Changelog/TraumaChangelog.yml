@@ -11271,3 +11271,10 @@ Entries:
   id: 1246
   time: '2026-07-08T09:56:27.0000000+00:00'
   url: https://github.com/Trauma-Station/Trauma-Station/pull/3484
+- author: Joel
+  changes:
+  - type: Remove
+    message: Removed ling pending rework
+  id: 1247
+  time: '2026-07-08T16:20:13.0000000+00:00'
+  url: https://github.com/Trauma-Station/Trauma-Station/pull/3482
