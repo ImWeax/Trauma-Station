@@ -4,6 +4,8 @@ using Content.Lavaland.Shared.Aggression;
 using Content.Lavaland.Shared.Megafauna.Components;
 using Content.Lavaland.Shared.Megafauna.Selectors;
 using Content.Shared.Mobs.Systems;
+using Content.Shared.Random.Helpers;
+using Robust.Shared.Random;
 using Robust.Shared.Timing;
 
 namespace Content.Lavaland.Shared.Megafauna.Systems;
@@ -14,8 +16,7 @@ public sealed partial class MegafaunaSystem : EntitySystem
     [Dependency] private INetManager _net = default!;
     [Dependency] private MobStateSystem _mobState = default!;
     [Dependency] private SharedTransformSystem _xform = default!;
-
-    private EntityQuery<AggressiveComponent> _aggressiveQuery;
+    [Dependency] private EntityQuery<AggressiveComponent> _aggressiveQuery = default!;
 
     protected override string SawmillName => "megafauna";
 
@@ -24,8 +25,6 @@ public sealed partial class MegafaunaSystem : EntitySystem
         base.Initialize();
 
         InitializeHandle();
-
-        _aggressiveQuery = GetEntityQuery<AggressiveComponent>();
     }
 
     public override void Update(float frameTime)
@@ -49,7 +48,7 @@ public sealed partial class MegafaunaSystem : EntitySystem
                 if (time > _timing.CurTime)
                     continue;
 
-                var args = new MegafaunaCalculationBaseArgs(uid, EntityManager, ProtoMan, Log, GetRandom());
+                var args = new MegafaunaCalculationBaseArgs(this, uid, EntityManager, ProtoMan, Log, GetRandom(uid));
                 var actionTime = action.Invoke(args);
                 ai.Schedule.Remove(time);
 
@@ -63,8 +62,6 @@ public sealed partial class MegafaunaSystem : EntitySystem
     }
 
     // TODO replace this with shared random
-    private System.Random GetRandom()
-    {
-        return new System.Random((int) (_timing.CurTick.Value * 6.7f));
-    }
+    private IRobustRandom GetRandom(EntityUid uid)
+        => SharedRandomExtensions.PredictedRandom(_timing, GetNetEntity(uid));
 }
