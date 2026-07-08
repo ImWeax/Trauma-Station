@@ -6,7 +6,7 @@
   group: Medicine
   desc: reagent-desc-dewormer
   physicalDesc: reagent-physical-desc-chalky
-  flavor:` medicine
+  flavor: medicine
   color: "#e0ae7b"
   metabolisms:
     Bloodstream:
