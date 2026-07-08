@@ -10,6 +10,7 @@
   color: "#e0ae7b"
   metabolisms:
     Bloodstream:
-    - !type:DiseaseProgressChange
-      affectedType: Parasite
-      progressModifier: -0.10
+      effects:
+      - !type:DiseaseProgressChange
+        affectedType: Parasite
+        progressModifier: -0.10
