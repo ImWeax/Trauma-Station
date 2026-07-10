@@ -9,7 +9,7 @@
   flavor: medicine
   color: "#e0ae7b"
   metabolisms:
-    Bloodstream:
+    Digestion:
       effects:
       - !type:DiseaseProgressChange
         affectedType: Parasite
