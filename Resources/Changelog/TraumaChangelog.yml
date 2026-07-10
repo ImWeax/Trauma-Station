@@ -11292,3 +11292,28 @@ Entries:
   id: 1249
   time: '2026-07-10T09:31:53.0000000+00:00'
   url: https://github.com/Trauma-Station/Trauma-Station/pull/3497
+- author: TechnicFighter
+  changes:
+  - type: Add
+    message: >-
+      Added extra depth to the Stripping Update, you can now unsheathe and draw
+      weapons from people's holsters. 
+  - type: Tweak
+    message: >-
+      You are now stealthier with thief gloves, you will make no sound when
+      opening your bag, or when picking up items, or putting them in your bag.
+  - type: Fix
+    message: >-
+      Fixed a bug that allowed you to keep someone's inventory open forever, and
+      allowed you to modify it.
+  - type: Fix
+    message: >-
+      Fixed visual and audio cues that announced that you had stolen from
+      someone.
+  - type: Fix
+    message: Fixed thief gloves not making the doafter of the new verbs faster.
+  - type: Fix
+    message: Fixed a bug that made you need 2 hands to strip someone.
+  id: 1250
+  time: '2026-07-10T10:05:34.0000000+00:00'
+  url: https://github.com/Trauma-Station/Trauma-Station/pull/3400
