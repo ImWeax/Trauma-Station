@@ -11326,3 +11326,20 @@ Entries:
   id: 1251
   time: '2026-07-10T11:36:48.0000000+00:00'
   url: https://github.com/Trauma-Station/Trauma-Station/pull/3485
+- author: Aviu
+  changes:
+  - type: Add
+    message: Heretic ice spear is now t1 ritual instead of t2 spell.
+  - type: Add
+    message: >-
+      Blade heretic hook and lock burglar spell are now passives that trigger on
+      alt-click on target with blade in combat mode.
+  - type: Add
+    message: >-
+      New lock path knowledge, replacing caretakers last refuge, see guidebook
+      for details.
+  - type: Tweak
+    message: Lock eldritch id now has doafter for linking doors.
+  id: 1252
+  time: '2026-07-10T12:03:56.0000000+00:00'
+  url: https://github.com/Trauma-Station/Trauma-Station/pull/3480
