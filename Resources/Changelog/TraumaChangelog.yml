@@ -11380,3 +11380,10 @@ Entries:
   id: 1257
   time: '2026-07-10T14:44:30.0000000+00:00'
   url: https://github.com/Trauma-Station/Trauma-Station/pull/3505
+- author: deltanedas
+  changes:
+  - type: Tweak
+    message: Massively nerfed slop frogs so they dont solo wipe med every time
+  id: 1258
+  time: '2026-07-10T15:13:02.0000000+00:00'
+  url: https://github.com/Trauma-Station/Trauma-Station/pull/3510
